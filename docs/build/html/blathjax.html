@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>blathjax &#8212; bbMathNQuizz  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to MathjaxInBlackboard’s documentation!" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to MathjaxInBlackboard’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">bbMathNQuizz  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">blathjax</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-blathjax.blathjax">
+<span id="blathjax"></span><h1>blathjax<a class="headerlink" href="#module-blathjax.blathjax" title="Permalink to this headline">¶</a></h1>
+<p>Tools for uploading to Blackboard Learn texts written in HTML or markdown.</p>
+<p>AUTHORS:</p>
+<ul class="simple">
+<li><p>Emmanuel Briand (2020): initial version</p></li>
+</ul>
+<p><a class="reference external" href="https://www.blackboard.com/teaching-learning/learning-management/blackboard-learn">Blackboard Learn</a>
+is a widespread commercial LMS (Learning Management System). LaTeX
+syntax for math content can be used in blackboard’s text editor.
+Depending on the configuration of Blackboard Learn on your Campus,
+this LaTeX code may be interpreted by
+<a class="reference external" href="https://docs.wiris.com/en/mathtype/mathtype_web/latex-support">WIRIS</a>
+and rendered with images. This is the default behaviour.
+The result is not always satisfying. An not very-known alternative is to use
+locally (regardless of the campus-wide configuration)
+<a class="reference external" href="https://docs.mathjax.org/en/v2.7-latest/start.html">Mathjax2</a> ,
+instead of the default WIRIS, to render math content.</p>
+<p><em>Blathjax</em> provides tools to convert text written outside of Blackboard Learn,
+into text whose math can sucessfully be rendered by Mathjax2 within
+Blackboard Learn.</p>
+<div class="section" id="how-to-use-blathjax">
+<h2>How to use blathjax<a class="headerlink" href="#how-to-use-blathjax" title="Permalink to this headline">¶</a></h2>
+<p>Example first:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;&#39;&#39;Consider the function $f$, periodic with period $2 \, \pi$,</span>
+<span class="gp">... </span><span class="s1">that fulfills:</span>
+<span class="gp">... </span><span class="s1">&lt;br&gt;</span>
+<span class="gp">... </span><span class="s1">$$f(x) = \left\lbrace</span>
+<span class="gp">... </span><span class="s1">\begin</span><span class="si">{matrix}</span><span class="s1"></span>
+<span class="gp">... </span><span class="s1">1 &amp;  \text{ for } x \in (-\pi;0),\\</span>
+<span class="gp">... </span><span class="s1">-x + 1  &amp; \text{ for } x \in [0;\pi].</span>
+<span class="gp">... </span><span class="s1">\end</span><span class="si">{matrix}</span><span class="s1"></span>
+<span class="gp">... </span><span class="s1">\right.$$</span>
+<span class="gp">... </span><span class="s1">&lt;br&gt;</span>
+<span class="gp">... </span><span class="s1">Find the coefficient $b_5$ of the Fourier series of $f$.&#39;&#39;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">blathjax</span> <span class="kn">import</span> <span class="n">blathjax</span> <span class="c1"># depends on the location of blathjax.py</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">blathjax</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+<span class="go">&lt;script type=&#39;text/javascript&#39; async src=&#39;https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML&#39;&gt;&lt;/script&gt;Consider the function \(f\), periodic with period \(2&amp;nbsp;\,&amp;nbsp;\pi\), that fulfills: &lt;br&gt; \begin{equation}f(x)&amp;nbsp;=&amp;nbsp;\left\lbrace&amp;nbsp;\begin{matrix}&amp;nbsp;1&amp;nbsp;&amp;&amp;nbsp;&amp;nbsp;\text{&amp;nbsp;for&amp;nbsp;}&amp;nbsp;x&amp;nbsp;\in&amp;nbsp;(-\pi;0),\\&amp;nbsp;-x&amp;nbsp;+&amp;nbsp;1&amp;nbsp;&amp;nbsp;&amp;&amp;nbsp;\text{&amp;nbsp;for&amp;nbsp;}&amp;nbsp;x&amp;nbsp;\in&amp;nbsp;[0;\pi].&amp;nbsp;\end{matrix}&amp;nbsp;\right.\end{equation} &lt;br&gt; Find the coefficient \(b_5\) of the Fourier series of \(f\).</span>
+</pre></div>
+</div>
+<p>The steps in general are as follow:</p>
+<ol class="arabic simple">
+<li><p>save your text as a string, with:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>for math mode:</p>
+<ul>
+<li><p>math inline mode delimited with:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span></code> … <code class="docutils literal notranslate"><span class="pre">$</span></code></p></li>
+<li><p>or <code class="docutils literal notranslate"><span class="pre">\(</span></code> … <code class="docutils literal notranslate"><span class="pre">\)</span></code></p></li>
+</ul>
+</li>
+<li><p>and math display mode with:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">$$</span></code> … <code class="docutils literal notranslate"><span class="pre">$$</span></code></p></li>
+<li><p>or <code class="docutils literal notranslate"><span class="pre">\[</span></code> … <code class="docutils literal notranslate"><span class="pre">\]</span></code></p></li>
+<li><p>or <code class="docutils literal notranslate"><span class="pre">\begin{equation}</span></code> … <code class="docutils literal notranslate"><span class="pre">\end{equation}</span></code></p></li>
+<li><p>or <code class="docutils literal notranslate"><span class="pre">\begin{align}</span></code> … <code class="docutils literal notranslate"><span class="pre">\end{align}</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>for text:  you can use HTML syntaxis for your text. Newlines should be
+indicated explicitly, for instance with <cite>&lt;br&gt;</cite>.</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>load <em>blathjax.py</em> and apply the <code class="docutils literal notranslate"><span class="pre">blathjax</span></code> function to your string. It
+returns a string that can be copied &amp; pasted in blackboard’s editor
+(in the
+<a class="reference external" href="https://help.blackboard.com/Learn/Instructor/Course_Content/Create_Content/Create_Course_Materials/Work_With_Text/What_Does_the_Editor_Do">source code window</a>)
+or used in pools of questions that can be
+<a class="reference external" href="https://help.blackboard.com/Learn/Instructor/Tests_Pools_Surveys/Reuse_Questions/Upload_Questions">uploaded as text files</a>.</p></li>
+</ol>
+</div>
+<div class="section" id="what-blathjax-does">
+<h2>What <em>blathjax</em> does<a class="headerlink" href="#what-blathjax-does" title="Permalink to this headline">¶</a></h2>
+<p>What <em>blathjax</em> does:</p>
+<ul>
+<li><p>inserts a call to Mathjax2</p></li>
+<li><p>replaces maths delimiters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>inline math delimiters <code class="docutils literal notranslate"><span class="pre">$</span></code> .. <code class="docutils literal notranslate"><span class="pre">$</span></code> are all replaced with
+<code class="docutils literal notranslate"><span class="pre">\(</span></code> … <code class="docutils literal notranslate"><span class="pre">\)</span></code>.</p></li>
+<li><p>display math delimiters <code class="docutils literal notranslate"><span class="pre">$$</span></code> … <code class="docutils literal notranslate"><span class="pre">$$</span></code> and  <code class="docutils literal notranslate"><span class="pre">\[</span></code> … <code class="docutils literal notranslate"><span class="pre">\]</span></code> are all
+replaced with <code class="docutils literal notranslate"><span class="pre">\begin{equation}</span></code> … <code class="docutils literal notranslate"><span class="pre">\end{equation}</span></code>.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>replaces all newline and whitespace characters in math mode with HTML
+non-breakable spaces (‘&amp;nbsp;’)</p></li>
+</ul>
+<p>If you want to have a newline in the output, use the HTML directive <code class="docutils literal notranslate"><span class="pre">&lt;br&gt;</span></code>.</p>
+<p>The delimiters <code class="docutils literal notranslate"><span class="pre">\begin{equation}</span></code> … <code class="docutils literal notranslate"><span class="pre">\end{equation}</span></code> are prefered over
+<code class="docutils literal notranslate"><span class="pre">\[</span></code> …  <code class="docutils literal notranslate"><span class="pre">\]</span></code> because opening escaped brackets have a special meaning
+for blackboard in some contexts (like FIB_PLUS test questions).</p>
+<p>The delimiters <code class="docutils literal notranslate"><span class="pre">$</span></code> … <code class="docutils literal notranslate"><span class="pre">$</span></code> and <code class="docutils literal notranslate"><span class="pre">$$</span></code> … <code class="docutils literal notranslate"><span class="pre">$$</span></code> are replaced in the output
+because blackboard’s math editor WIRIS would render them before Mathjax.</p>
+<p>Replacing whitespaces and newline characters in math mode prevents blackboard
+from inserting HTML linebreak directives that would break the math code before
+Mathjax tries to render it.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Nested math modes, as in
+<code class="docutils literal notranslate"><span class="pre">r'\(f(x)</span> <span class="pre">=</span> <span class="pre">1</span> <span class="pre">\text{</span> <span class="pre">if</span> <span class="pre">\(x</span> <span class="pre">&gt;</span> <span class="pre">0\),</span> <span class="pre">otherwise</span> <span class="pre">}0.\)'</span></code>
+are not supported. Avoid them.</p>
+</div>
+<dl class="py function">
+<dt id="blathjax.blathjax.blathjax">
+<code class="sig-prename descclassname">blathjax.blathjax.</code><code class="sig-name descname">blathjax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">script_url</span><span class="o">=</span><span class="default_value">'https://cdn.jsdelivr.net/npm/mathjax&#64;2/MathJax.js?config=TeX-AMS_CHTML'</span></em>, <em class="sig-param"><span class="n">escape_brackets</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#blathjax.blathjax.blathjax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a formatted copy of <code class="docutils literal notranslate"><span class="pre">text</span></code> suitable for uploading in blackboard</p>
+<dl class="simple">
+<dt>INPUT:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code> – string</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">script_url</span></code> – string (Default: <code class="docutils literal notranslate"><span class="pre">_MATHJAX_URL</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">escape_brackets</span></code> – boolean (Default:  <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="blathjax.blathjax.escape_opening_brackets">
+<code class="sig-prename descclassname">blathjax.blathjax.</code><code class="sig-name descname">escape_opening_brackets</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#blathjax.blathjax.escape_opening_brackets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace all occurrences of opening bracket ‘[‘ with ‘[‘, except those
+between &lt;pre&gt; and &lt;/pre&gt;</p>
+<p>Blackboard needs all opening brackets to be escaped when uploading a test
+or a pool as a text file. (except for those in a &lt;pre&gt;&lt;/pre&gt; environnment).
+This is not the case for closing brackets.</p>
+<p>Needed for some types of questions such as FIB_PLUS.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="blathjax.blathjax.fix_latex_delimiters">
+<code class="sig-prename descclassname">blathjax.blathjax.</code><code class="sig-name descname">fix_latex_delimiters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#blathjax.blathjax.fix_latex_delimiters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the string obtained by replacing the LaTeX delimiters
+<code class="docutils literal notranslate"><span class="pre">$</span></code> … <code class="docutils literal notranslate"><span class="pre">$</span></code> with <code class="docutils literal notranslate"><span class="pre">\(</span></code> … <code class="docutils literal notranslate"><span class="pre">\)</span></code>
+and <code class="docutils literal notranslate"><span class="pre">$$</span></code> … <code class="docutils literal notranslate"><span class="pre">$$</span></code> with <code class="docutils literal notranslate"><span class="pre">\begin{equation}</span></code> … <code class="docutils literal notranslate"><span class="pre">\end{equation}</span></code>.</p>
+<p>Uses the python module <code class="docutils literal notranslate"><span class="pre">re</span></code> (regular expressions).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function substitutes as well escaped dollars.</p>
+</div>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fix_latex_delimiters</span><span class="p">(</span><span class="s2">&quot;$1+1=2$.&quot;</span><span class="p">)</span>
+<span class="go">&#39;\\(1+1=2\\).&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fix_latex_delimiters</span><span class="p">(</span><span class="s2">&quot;$$1+1=2$$&quot;</span><span class="p">)</span>
+<span class="go">&#39;\\begin{equation}1+1=2\\end{equation}&#39;</span>
+</pre></div>
+</div>
+<p>In the following example, the current code would return erroneously
+<code class="docutils literal notranslate"><span class="pre">'Price:</span> <span class="pre">2\\\\(.</span> <span class="pre">But</span> <span class="pre">\\)2+2=4$.'</span></code>.
+A <code class="docutils literal notranslate"><span class="pre">NotImplemented</span> <span class="pre">Error</span></code> is returned instead:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fix_latex_delimiters</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Price: 2\$. But $2+2=4$.&quot;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="c">...</span>
+<span class="gr">NotImplementedError</span>: <span class="n">The string contains escaped dollars.</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Another implementation is suggested
+<a class="reference external" href="https://stackoverflow.com/questions/48361541/convert-latex-dollar-sign-to">here</a>
+and
+<a class="reference external" href="https://stackoverflow.com/questions/14949090/in-python-how-can-i-use-regex-to-replace-square-bracket-with-parentheses">there</a> .
+This is (for pair of matching simple dollars):
+<code class="docutils literal notranslate"><span class="pre">re.sub(r'(^|[^\$])\$([^\$]+)\$([^\$]|$)',r'\1\\(\2\\)\3',</span> <span class="pre">text)</span></code></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="blathjax.blathjax.insert_mathjax_script">
+<code class="sig-prename descclassname">blathjax.blathjax.</code><code class="sig-name descname">insert_mathjax_script</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">url</span><span class="o">=</span><span class="default_value">'https://cdn.jsdelivr.net/npm/mathjax&#64;2/MathJax.js?config=TeX-AMS_CHTML'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#blathjax.blathjax.insert_mathjax_script" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a copy of <code class="docutils literal notranslate"><span class="pre">text</span></code> with a script calling MathJax2 added at the
+beginning.</p>
+<p>The default url does the job, but another url may be used, for instance
+the url of a local script.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="blathjax.blathjax.remove_spaces_in_latex">
+<code class="sig-prename descclassname">blathjax.blathjax.</code><code class="sig-name descname">remove_spaces_in_latex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#blathjax.blathjax.remove_spaces_in_latex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a copy of the text with all spaces between LaTeX math mode delimiters
+replaced with HTML nonbreakable spaces ‘&amp;nbsp;’.</p>
+<p>The LaTeX math delimiters affected are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\(</span></code>… <code class="docutils literal notranslate"><span class="pre">\)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\begin{equation}</span></code> … <code class="docutils literal notranslate"><span class="pre">\end{equation}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\begin{align}</span></code> … <code class="docutils literal notranslate"><span class="pre">\end{align}</span></code></p></li>
+</ul>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">remove_spaces_in_latex</span><span class="p">(</span><span class="s1">&#39;\(1 + 1 = 2\)&#39;</span><span class="p">)</span>
+<span class="go">&#39;\\(1&amp;nbsp;+&amp;nbsp;1&amp;nbsp;=&amp;nbsp;2\\)&#39;</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Nested math modes are not supported.</p>
+</div>
+<p>Example of failure with nested math (note the whitespace left before
+“otherwise”):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;\(f(x) = 1 \text{ if \(x &gt; 0\), otherwise }0.\)&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remove_spaces_in_latex</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">&#39;\\(f(x)&amp;nbsp;=&amp;nbsp;1&amp;nbsp;\\text{&amp;nbsp;if&amp;nbsp;\\(x&amp;nbsp;&gt;&amp;nbsp;0\\), otherwise }0.\\)&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="blathjax.blathjax.replace_inside">
+<code class="sig-prename descclassname">blathjax.blathjax.</code><code class="sig-name descname">replace_inside</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">s</span></em>, <em class="sig-param"><span class="n">opening</span></em>, <em class="sig-param"><span class="n">closing</span></em>, <em class="sig-param"><span class="n">before</span><span class="o">=</span><span class="default_value">' '</span></em>, <em class="sig-param"><span class="n">after</span><span class="o">=</span><span class="default_value">'&amp;nbsp;'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#blathjax.blathjax.replace_inside" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the string obtained from <code class="docutils literal notranslate"><span class="pre">s</span></code> by replacing <code class="docutils literal notranslate"><span class="pre">before</span></code> with <code class="docutils literal notranslate"><span class="pre">after</span></code>
+in all substrings delimited by  <code class="docutils literal notranslate"><span class="pre">opening</span></code> and <code class="docutils literal notranslate"><span class="pre">closing</span></code>.</p>
+<p>Replace spaces with HTML non-breakable spaces when between escaped brackets:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\[ L[1] = 2 \]&quot;</span><span class="p">;</span> <span class="n">replace_inside</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\[&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\]&#39;</span><span class="p">)</span>
+<span class="go">&#39;\\[&amp;nbsp;L[1]&amp;nbsp;=&amp;nbsp;2&amp;nbsp;\\]&#39;</span>
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">**</span></code> with <code class="docutils literal notranslate"><span class="pre">^</span></code>  when between dollars:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;**Note that:** $ 2**2 = 4$.&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">replace_inside</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">,</span> <span class="s1">&#39;**&#39;</span><span class="p">,</span> <span class="s1">&#39;^&#39;</span><span class="p">)</span>
+<span class="go">&#39;**Note that:** $ 2^2 = 4$.&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">blathjax</a><ul>
+<li><a class="reference internal" href="#how-to-use-blathjax">How to use blathjax</a></li>
+<li><a class="reference internal" href="#what-blathjax-does">What <em>blathjax</em> does</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to MathjaxInBlackboard’s documentation!</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/blathjax.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to MathjaxInBlackboard’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">bbMathNQuizz  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">blathjax</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Emmanuel Briand.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+  </body>
+</html>
