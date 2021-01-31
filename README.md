@@ -36,6 +36,6 @@ This string can now be copied & pasted in blackboard's editor (in the [source co
 
 ### Installation
 
-* just download the file `blathjax.py` and import it in your python fil/intractive session.
-* or install the whole package `bbMathNQuizz` and run `setup.py`.
+* just download the file `blathjax.py` and import it in your python fil/interactive session.
+* or download and install the whole project `bbMathNQuizz` by running `python setup.py install`.
 
