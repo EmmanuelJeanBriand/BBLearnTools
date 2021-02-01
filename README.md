@@ -1,6 +1,11 @@
-# bbMathNQuizz
+# BBLearnTools
 
 Tools in Python for writing math and quizzes for Blackboard Learn.
+
+Packages: currently only one:
+
+* blathjax: for rendering math in Blackboard with Mathjax2.
+
 
 ## Module *blathjax*
 
