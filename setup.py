@@ -1,9 +1,9 @@
 from setuptools import setup
 
-__project__ = "bbMathNQuizz"
-__version__ = "0.0.1"
-__description__ = "Tools for formatting text with math for Blackboad Learn."
-__packages__ = ["blathjax"]
+__project__ = "bblearntools"
+__version__ = "1.0"
+__description__ = "Tools for quizzes and formatting text with math for Blackboad Learn."
+__packages__ = ["blackjax"]
 __author__ = "Emmnuel Briand"
 
 setup(

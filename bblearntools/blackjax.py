@@ -16,11 +16,11 @@ locally (regardless of the campus-wide configuration)
 `Mathjax2 <https://docs.mathjax.org/en/v2.7-latest/start.html>`_ ,
 instead of the default WIRIS, to render math content. 
 
-*Blathjax* provides tools to convert text written outside of Blackboard Learn, 
+*Blackjax* provides a tool (blackjaxify)  to convert text written outside of Blackboard Learn, 
 into text whose math can sucessfully be rendered by Mathjax2 within 
 Blackboard Learn.
 
-How to use blathjax
+How to use blackjax
 -------------------
 
 Example first::
@@ -36,8 +36,8 @@ Example first::
     ... \right.$$
     ... <br>
     ... Find the coefficient $b_5$ of the Fourier series of $f$.'''
-    >>> from blathjax import blathjax # depends on the location of blathjax.py
-    >>> print(blathjax(s))
+    >>> from blackjax import blackjaxify
+    >>> print(blackjaxify(s))
     <script type='text/javascript' async src='https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML'></script>Consider the function \(f\), periodic with period \(2&nbsp;\,&nbsp;\pi\), that fulfills: <br> \begin{equation}f(x)&nbsp;=&nbsp;\left\lbrace&nbsp;\begin{matrix}&nbsp;1&nbsp;&&nbsp;&nbsp;\text{&nbsp;for&nbsp;}&nbsp;x&nbsp;\in&nbsp;(-\pi;0),\\&nbsp;-x&nbsp;+&nbsp;1&nbsp;&nbsp;&&nbsp;\text{&nbsp;for&nbsp;}&nbsp;x&nbsp;\in&nbsp;[0;\pi].&nbsp;\end{matrix}&nbsp;\right.\end{equation} <br> Find the coefficient \(b_5\) of the Fourier series of \(f\).
 
 The steps in general are as follow:
@@ -62,17 +62,17 @@ The steps in general are as follow:
     indicated explicitly, for instance with `<br>`.
 
 
-2. load *blathjax.py* and apply the ``blathjax`` function to your string. It 
+2. load *blackjax.py* and apply the ``blackjaxify`` function to your string. It 
    returns a string that can be copied & pasted in blackboard's editor 
    (in the 
    `source code window <https://help.blackboard.com/Learn/Instructor/Course_Content/Create_Content/Create_Course_Materials/Work_With_Text/What_Does_the_Editor_Do>`_) 
    or used in pools of questions that can be 
    `uploaded as text files <https://help.blackboard.com/Learn/Instructor/Tests_Pools_Surveys/Reuse_Questions/Upload_Questions>`_.
     
-What *blathjax* does
---------------------
+What *blackjaxify* does
+-----------------------
 
-What *blathjax* does:
+What *blackjaxify* does:
 
 * inserts a call to Mathjax2
 
@@ -120,7 +120,7 @@ _DELIMITERS = [(r'\(', r'\)'),
 # Main function
 #---------------------
 
-def blathjax(text, script_url=_MATHJAX_URL, escape_brackets=False):
+def blackjaxify(text, script_url=_MATHJAX_URL, escape_brackets=False):
     r"""
     Return a formatted copy of ``text`` suitable for uploading in blackboard
     

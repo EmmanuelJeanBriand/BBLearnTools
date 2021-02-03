@@ -6,11 +6,11 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'bbMathNQuizz'
+project = 'BBLearnTools'
 copyright = '2021, Emmanuel Briand'
 author = 'Emmanuel Briand'
 package_folder = "../.."
-package_name = 'blathjax'
+package_name = 'bblearntools'
 
 # -- Path setup --------------------------------------------------------------
 

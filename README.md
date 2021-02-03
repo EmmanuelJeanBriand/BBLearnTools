@@ -4,15 +4,15 @@ Tools in Python for writing math and quizzes for Blackboard Learn.
 
 Packages: currently only one:
 
-* blathjax: for rendering math in Blackboard with Mathjax2.
+* blackjax: for rendering math in Blackboard with Mathjax2.
 
 
-## Module *blathjax*
+## Module *blackjax*
 
 [Blackboard Learn](https://www.blackboard.com/teaching-learning/learning-management/blackboard-learn) is a widespread commercial LMS (Learning Management System). LaTeX syntax for math content can be used in blackboard's text editor. Depending on the configuration of Blackboard Learn (on a campus), this LaTeX code may be interpreted by [WIRIS](https://docs.wiris.com/en/mathtype/mathtype_web/latex-support) and rendered with images. This is the default behaviour. The result is not always satisfying. An not very-known alternative is to use 
 locally (regardless of the campus-wide configuration) [Mathjax2](https://docs.mathjax.org/en/v2.7-latest/start.html), instead of the default WIRIS, to render math content. 
 
-*Blathjax* provides tools to convert text written outside of Blackboard Learn, into text whose math can sucessfully be rendered by Mathjax2 within Blackboard Learn.
+*Blackjax* provides tools to convert text written outside of Blackboard Learn, into text whose math can sucessfully be rendered by Mathjax2 within Blackboard Learn.
 
 ### Example of usage:
 
@@ -29,9 +29,9 @@ $$f(x) = \left\lbrace
 <br>
 Find the coefficient $b_5$ of the Fourier series of $f$.'''
 
-from blathjax import blathjax
+from blackjax import blackjaxify
 
-print(blathjax(s))
+print(blackjaxify(s))
 ```
 This gives:
 ```html
@@ -41,6 +41,6 @@ This string can now be copied & pasted in blackboard's editor (in the [source co
 
 ### Installation
 
-* just download the file `blathjax.py` and import it in your python file/interactive session with `from blathjax import blathjax`.
-* or download and install the whole project `bbMathNQuizz` by running `python setup.py install`. Then import within python with `from blathjax.blathjax import blathjax`.
+* just download the file `blackjax.py` and import it in your python file/interactive session with `from blackjax import blackjaxify`.
+* or download and install the whole project `BBLearnTools` by running `python setup.py install`. Then import within python with `from bblearntools.blackjax import blackjax`.
 

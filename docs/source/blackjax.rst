@@ -1,9 +1,9 @@
 .. nodoctest
 
-blathjax
+blackjax
 =========
 
-.. automodule:: blathjax.blathjax
+.. automodule:: bblearntools.blackjax
    :members:
    :undoc-members:
    :show-inheritance:
