@@ -39,6 +39,8 @@ This gives:
 ```
 This string can now be copied & pasted in blackboard's editor (in the [source code window](https://help.blackboard.com/Learn/Instructor/Course_Content/Create_Content/Create_Course_Materials/Work_With_Text/What_Does_the_Editor_Do)) or used in pools of questions that can be [uploaded as text files](https://help.blackboard.com/Learn/Instructor/Tests_Pools_Surveys/Reuse_Questions/Upload_Questions).
 
+<img src="IMAGES/blackjax.png" width=400>
+
 ### Installation
 
 * just download the file `blackjax.py` and import it in your python file/interactive session with `from blackjax import blackjaxify`.
