@@ -41,10 +41,10 @@ This string can now be copied & pasted in blackboard's editor (in the [source co
 
 This is now rendered in Blackboard as:
 
-<img src="IMAGES/blackjax.png" width=800>
+<img src="IMAGES/blackjax.png" width=1000>
 
 ### Installation
 
 * just download the file `blackjax.py` and import it in your python file/interactive session with `from blackjax import blackjaxify`.
-* or download and install the whole project `BBLearnTools` by running `python setup.py install`. Then import within python with `from bblearntools.blackjax import blackjax`.
+* or download and install the whole project `BBLearnTools` by running `python setup.py install`. Then import within python with `from blackjax import blackjaxify`.
 
