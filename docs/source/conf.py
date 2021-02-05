@@ -11,6 +11,7 @@ copyright = '2021, Emmanuel Briand'
 author = 'Emmanuel Briand'
 package_folder = "../.."
 package_name = 'bblearntools'
+release = "1.0.0"
 
 # -- Path setup --------------------------------------------------------------
 
