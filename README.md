@@ -15,6 +15,13 @@ Modules: currently only one:
 
 ### Example:
 
+In Python, load *blackjaxify*:
+```python
+from blackjax import blackjaxify
+```
+
+and define
+
 ```python
 s = r'''Consider the function $f$, periodic with period $2 \, \pi$,
 that fulfills:
