@@ -30,7 +30,7 @@ Find the coefficient $b_5$ of the Fourier series of $f$.'''
 ```
 Then
 ```python
-blackjaxify(s)
+print(blackjaxify(s))
 ```
 gives:
 ```html
