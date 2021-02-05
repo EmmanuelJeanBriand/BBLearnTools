@@ -38,7 +38,13 @@ Example first::
     ... Find the coefficient $b_5$ of the Fourier series of $f$.'''
     >>> from blackjax import blackjaxify
     >>> print(blackjaxify(s))
-    <script type='text/javascript' async src='https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML'></script>Consider the function \(f\), periodic with period \(2&nbsp;\,&nbsp;\pi\), that fulfills: <br> \begin{equation}f(x)&nbsp;=&nbsp;\left\lbrace&nbsp;\begin{matrix}&nbsp;1&nbsp;&&nbsp;&nbsp;\text{&nbsp;for&nbsp;}&nbsp;x&nbsp;\in&nbsp;(-\pi;0),\\&nbsp;-x&nbsp;+&nbsp;1&nbsp;&nbsp;&&nbsp;\text{&nbsp;for&nbsp;}&nbsp;x&nbsp;\in&nbsp;[0;\pi].&nbsp;\end{matrix}&nbsp;\right.\end{equation} <br> Find the coefficient \(b_5\) of the Fourier series of \(f\).
+    <script type='text/javascript' async src='https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML'></script>
+    Consider the function \(f\), periodic with period \(2&nbsp;\,&nbsp;\pi\),
+    that fulfills:
+    <br>
+    \begin{equation}f(x)&nbsp;=&nbsp;\left\lbrace&nbsp;\begin{matrix}&nbsp;1&nbsp;&&nbsp;&nbsp;\text{&nbsp;for&nbsp;}&nbsp;x&nbsp;\in&nbsp;(-\pi;0),\\&nbsp;-x&nbsp;+&nbsp;1&nbsp;&nbsp;&&nbsp;\text{&nbsp;for&nbsp;}&nbsp;x&nbsp;\in&nbsp;[0;\pi].&nbsp;\end{matrix}&nbsp;\right.\end{equation}
+    <br>
+    Find the coefficient \(b_5\) of the Fourier series of \(f\).
 
 The steps in general are as follow:
 
@@ -133,7 +139,6 @@ def blackjaxify(text, script_url=_MATHJAX_URL, escape_brackets=False):
     text = fix_latex_delimiters(text)
     if escape_brackets:
         text = escape_opening_brackets(text) 
-    text = text.replace('\n', ' ')
     text = remove_spaces_in_latex(text) 
     return text
 
@@ -145,8 +150,8 @@ def insert_mathjax_script(text, url=_MATHJAX_URL):
     The default url does the job, but another url may be used, for instance 
     the url of a local script.
     """
-    mathjax = (r"<script type='text/javascript' async src='{url}'></script>"
-               .format(url=url))
+    mathjax = (r"<script type='text/javascript' async src='{url}'></script>" 
+               + "\n").format(url=url)
     return mathjax + text
 
 def escape_opening_brackets(text):
@@ -180,10 +185,10 @@ def replace_inside(s, opening, closing, before=" ", after="&nbsp;"):
     """
     opening = re.escape(opening)
     closing = re.escape(closing)
-    inside = re.compile(r'({opening}.*?{closing})'.format(opening=opening,
-                                                          closing=closing))
+    inside = re.compile((r'({opening}.*?{closing})'
+                         .format(opening=opening,closing=closing)),
+                        re.DOTALL)
     return re.sub(inside, lambda x: x.group(1).replace(before, after), s)
-
 
 def fix_latex_delimiters(text):
     r"""
@@ -228,7 +233,8 @@ def fix_latex_delimiters(text):
 
 def remove_spaces_in_latex(text):
     r"""
-    Return a copy of the text with all spaces between LaTeX math mode delimiters 
+    Return a copy of the text with all spaces and newline characters
+    thata are between LaTeX math mode delimiters are
     replaced with HTML nonbreakable spaces '&nbsp;'.
     
     The LaTeX math delimiters affected are:
@@ -253,5 +259,6 @@ def remove_spaces_in_latex(text):
         
     """
     for (opening, closing) in _DELIMITERS:
-        text = replace_inside(text, opening, closing, ' ', '&nbsp;')  
+        text = replace_inside(text, opening, closing, ' ', '&nbsp;')
+        text = replace_inside(text, opening, closing, '\n', '&nbsp;')
     return text
