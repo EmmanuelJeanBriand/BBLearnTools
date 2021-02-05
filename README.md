@@ -2,7 +2,7 @@
 
 Tools in Python for writing math and quizzes for Blackboard Learn.
 
-Packages: currently only one:
+Modules: currently only one:
 
 * blackjax: for rendering math in Blackboard with Mathjax2.
 
