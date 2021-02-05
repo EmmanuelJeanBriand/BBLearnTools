@@ -1,9 +1,0 @@
-.. nodoctest
-
-blathjax
-=========
-
-.. automodule:: bbTextTools.blathjax
-   :members:
-   :undoc-members:
-   :show-inheritance:
