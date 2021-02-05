@@ -34,7 +34,7 @@ blackjaxify(s)
 ```
 gives:
 ```html
-<script type='text/javascript' async src='https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML'></script>Consider the function \(f\), periodic with period \(2&nbsp;\,&nbsp;\pi\), that fulfills: <br> \begin{equation}f(x)&nbsp;=&nbsp;\left\lbrace&nbsp;\begin{matrix}&nbsp;1&nbsp;&&nbsp;&nbsp;\text{&nbsp;for&nbsp;}&nbsp;x&nbsp;\in&nbsp;(-\pi;0),\\&nbsp;-x&nbsp;+&nbsp;1&nbsp;&nbsp;&&nbsp;\text{&nbsp;for&nbsp;}&nbsp;x&nbsp;\in&nbsp;[0;\pi].&nbsp;\end{matrix}&nbsp;\right.\end{equation} <br> Find the coefficient \(b_5\) of the Fourier series of \(f\).<script type='text/javascript' async src='https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML'></script>
+<script type='text/javascript' async src='https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML'></script>
 Consider the function \(f\), periodic with period \(2&nbsp;\,&nbsp;\pi\),
 that fulfills:
 <br>
@@ -50,6 +50,6 @@ This is now rendered in Blackboard as:
 
 ### Installation
 
-* just download the file `blackjax.py` and import it in your python file/interactive session with `from blackjax import blackjaxify`.
+* just download the file [`blackjax.py`](bblearntools/blackjax.py) and import it in your python file/interactive session with `from blackjax import blackjaxify`.
 * or download and install the whole project `BBLearnTools` by running `python setup.py install`. Then import within python with `from blackjax import blackjaxify`.
 
