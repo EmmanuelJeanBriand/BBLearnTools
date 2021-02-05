@@ -11,7 +11,7 @@ Modules: currently only one:
 
 [Blackboard Learn](https://www.blackboard.com/teaching-learning/learning-management/blackboard-learn) is a widespread commercial LMS (Learning Management System). LaTeX syntax for math content can be used in blackboard's text editor. This LaTeX code is interpreted by [WIRIS](https://docs.wiris.com/en/mathtype/mathtype_web/latex-support) and rendered with images. The result is not always satisfying. A not very-known alternative is to call locally [Mathjax2](https://docs.mathjax.org/en/v2.7-latest/start.html), instead of the default WIRIS, to render math content. 
 
-*Blackjax* provides tools to convert text written outside of Blackboard Learn, into text whose math can sucessfully be rendered by Mathjax2 within Blackboard Learn.
+*Blackjax* provides tools to convert text written outside of Blackboard Learn, into text whose math can sucessfully be rendered by Mathjax2 within Blackboard Learn (in most Blakboard tools, but not all of them; not, for instance, in discussion boards).
 
 ### Example:
 
