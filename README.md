@@ -63,11 +63,16 @@ This is now rendered in Blackboard as:
 Blackboard ("Original view") offers the possibility to [upload pools of questions as tab-separated text files](https://help.blackboard.com/Learn/Instructor/Tests_Pools_Surveys/Reuse_Questions/Upload_Questions). The module *bbtextquiz* provides functions for writing such files. As an example, we consider the creation of a pool of 16 questions, all identical except for the numerical data.
 
 ```python
-from string import Template
+from string import Template  
 class BBTemplate(Template):
-    delimiter = r'\temp'
+    delimiter = r'\temp'  
+    
+# question template (use Template strings)
 q = BBTemplate(r"How many \temp{type} pairs of distinct elements of $\{1, 2, \ldots, \temp{n}\}$ are there?")
+
+# function that computes the answer from the data
 def ans(type, n): return int(n*(n-1)/2) if type == 'unordered' else n*(n-1)
+
 L = [fields_NUM(q.substitute(type=type, n=n), ans(type, n)) 
      for n in range(7, 15) for type in ['ordered', 'unordered']]
 write_bbpool('pool_on_pairs.txt', L)
