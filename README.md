@@ -75,7 +75,7 @@ write_bbpool('pool_on_pairs.txt', L)
 
 After that, the file `pool_on_pairs.txt`has been created. It can be uplodad to Blackboard as indicated in [the Blackboard help page "Upload Questions"](https://help.blackboard.com/Learn/Instructor/Tests_Pools_Surveys/Reuse_Questions/Upload_Questions), and used to create an exam, for instance with a Random Block. Here is one of the questions:
 
-<img src="IMAGES/bbtextquiz.md" width=1000>
+<img src="IMAGES/bbtextquiz.png" width=1000>
 
 The main functions in this module are `write_bbpool` to write the file, and `fields_MC`, `fields_MA`, `fields_NUM`, `fields_TF`to format thge questions of type MC (Multiple Choice), MA (Multiple Answers), NUM (Numeric) and TF (True/False). The other questions are not supported by now, but it would not be difficult to complete the file `bbtextquiz.py` for including them. 
 
