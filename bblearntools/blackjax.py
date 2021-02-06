@@ -2,17 +2,15 @@ r"""Tools for uploading to Blackboard Learn texts written in HTML or markdown.
 
 AUTHORS:
 
-- Emmanuel Briand (2020): initial version
+- Emmanuel Briand (2021): initial version
 
 `Blackboard Learn <https://www.blackboard.com/teaching-learning/learning-management/blackboard-learn>`_  
 is a widespread commercial LMS (Learning Management System). LaTeX 
 syntax for math content can be used in blackboard's text editor. 
-Depending on the configuration of Blackboard Learn on your Campus, 
-this LaTeX code may be interpreted by 
+This LaTeX code can be interpreted by 
 `WIRIS <https://docs.wiris.com/en/mathtype/mathtype_web/latex-support>`_ 
-and rendered with images. This is the default behaviour.
-The result is not always satisfying. An not very-known alternative is to use 
-locally (regardless of the campus-wide configuration) 
+and rendered with images. 
+The result is not always satisfying. An not very-known alternative is to use  
 `Mathjax2 <https://docs.mathjax.org/en/v2.7-latest/start.html>`_ ,
 instead of the default WIRIS, to render math content. 
 
@@ -126,16 +124,18 @@ _DELIMITERS = [(r'\(', r'\)'),
 # Main function
 #---------------------
 
-def blackjaxify(text, script_url=_MATHJAX_URL, escape_brackets=False):
+def blackjaxify(text, script=True, script_url=_MATHJAX_URL, escape_brackets=False):
     r"""
     Return a formatted copy of ``text`` suitable for uploading in blackboard
     
     INPUT:
         - ``text`` -- string
+        - ``script`` -- boolean (Default: ``True``)
         - ``script_url`` -- string (Default: ``_MATHJAX_URL``)
         - ``escape_brackets`` -- boolean (Default:  ``False``)
     """
-    text = insert_mathjax_script(text, script_url)
+    if script:
+    	text = insert_mathjax_script(text, script_url)
     text = fix_latex_delimiters(text)
     if escape_brackets:
         text = escape_opening_brackets(text) 

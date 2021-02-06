@@ -11,3 +11,4 @@ Welcome to BBLearnTools' documentation!
    :caption: Contents:
 
    blackjax
+   bbtextquiz

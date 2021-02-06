@@ -25,6 +25,7 @@ release = "1.0.0"
 
 import sys, os
 sys.path.insert(0, os.path.abspath(package_folder))
+sys.path.insert(0, os.path.abspath(package_folder + "/" +package_name))
 
 # -- General configuration ---------------------------------------------------
 
@@ -47,6 +48,7 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['.ipynb_checkpoints']
 
+autodoc_member_order = 'bysource'
 
 # -- Options for HTML output -------------------------------------------------
 
