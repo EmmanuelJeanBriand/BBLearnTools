@@ -88,7 +88,7 @@ write_bbpool('pool4.txt', [Q1, Q2, Q3, Q4])
 ```
 After that, the file `pool4.txt` has been created. It can be uplodad to Blackboard as indicated in [the Blackboard help page "Upload Questions"](https://help.blackboard.com/Learn/Instructor/Tests_Pools_Surveys/Reuse_Questions/Upload_Questions). Then one can use the questions to create an exam, whose preview is as follows.
 
-<img src="IMAGES/pool4.png", width=1000>
+<img src="IMAGES/pool4.png" width=1000>
 
 ### Example 2: a pool of similar questions with different data
 
@@ -119,4 +119,4 @@ The main functions in this module are `write_bbpool` to write the file, and `fie
 
 * just download the files [`blackjax.py`](bblearntools/blackjax.py) and [`bbtextquiz.py`](bblearntools/bbtextquiz.py) and import them in your python file/interactive session with `from blackjax import blackjaxify`and/or `from bbtextquiz import *`.
     
-* or download and install the whole project `BBLearnTools` by running `python setup.py install`. Then import within python with `from blackjax import blackjaxify`and/or `from bbtextquiz import *`..
+* or download and install the whole project `BBLearnTools` by running `python setup.py install`. Then import within python with `from blackjax import blackjaxify`and/or `from bbtextquiz import *`.
