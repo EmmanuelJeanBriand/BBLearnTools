@@ -88,7 +88,7 @@ write_bbpool('pool4.txt', [Q1, Q2, Q3, Q4])
 ```
 After that, the file `pool4.txt` has been created. It can be uplodad to Blackboard as indicated in [the Blackboard help page "Upload Questions"](https://help.blackboard.com/Learn/Instructor/Tests_Pools_Surveys/Reuse_Questions/Upload_Questions). Then one can use the questions to create an exam, whose preview is as follows.
 
-<img src="IMAGES/pool4.txt", width=1000>
+<img src="IMAGES/pool4.png", width=1000>
 
 ### Example 2: a pool of similar questions with different data
 
