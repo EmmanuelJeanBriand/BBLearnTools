@@ -13,6 +13,22 @@ of type NUM, MC, MA and TF. See the BlackBoard help pages on "`Upload Questions 
 
 EXAMPLES:
 
+We create a pool of four questions, of types MC, MA, NUM and TF::
+
+    >>> q = r'For $F(x,y)=x^2 y - x^2 - 2 y^2 + 3$, ¿What type of point is $(2;1)$?'
+    >>> Q1 = fields_MC(q, [('a local maximum', False), 
+    ...                    ('a local minimum', False), 
+    ...                    ('a saddle point', True)])
+    >>> Q2 = fields_MA('¿Which of the following functions are even?', 
+    ...                 [('cosine', True), ('sine', False), ('$x^2$', True), ('$x+1$', False)])
+    >>> Q3 = fields_TF('The series with general term $1/n$ is convergent.', False )
+    >>> q = r'''¿What is the infinite sum  
+    ... $1+\frac{1}{5} + \frac{1}{25}+ \frac{1}{125} + \cdots$?
+    ... <br>
+    ... Give your answer with two decimal places.'''
+    >>> Q4 = fields_NUM(q, 1.25, 0.01)
+    >>> write_bbpool('pool4.txt', [Q1, Q2, Q3, Q4])
+
 We create a pool of 16 questions of type NUM whose data are different. 
 For this, we make use of `Template strings <https://docs.python.org/3.8/library/string.html#template-strings>`_::
 
