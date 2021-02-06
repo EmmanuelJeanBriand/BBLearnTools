@@ -60,7 +60,39 @@ This is now rendered in Blackboard as:
 
 ## Module *bbtextquiz*
 
-Blackboard ("Original view") offers the possibility to [upload pools of questions as tab-separated text files](https://help.blackboard.com/Learn/Instructor/Tests_Pools_Surveys/Reuse_Questions/Upload_Questions). The module *bbtextquiz* provides functions for writing such files. As an example, we consider the creation of a pool of 16 questions, all identical except for the numerical data.
+Blackboard ("Original view") offers the possibility to [upload pools of questions as tab-separated text files](https://help.blackboard.com/Learn/Instructor/Tests_Pools_Surveys/Reuse_Questions/Upload_Questions). The module *bbtextquiz* provides functions for writing such files. 
+
+
+### Example 1: a pool of 4 questions of different types
+
+As an example, we create a pool of four questions:
+
+```python
+q = r'For $F(x,y)=x^2 y - x^2 - 2 y^2 + 3$, ¿What type of point is $(2;1)$?'
+Q1 = fields_MC(q, [('a local maximum', False), 
+                   ('a local minimum', False), 
+                   ('a saddle point', True)])
+
+Q2 = fields_MA('¿Which of the following functions are even?', 
+          [('cosine', True), ('sine', False), ('$x^2$', True), ('$x+1$', False)])
+
+Q3 = fields_TF('The series with general term $1/n$ is convergent.', False )
+
+q = r'''¿What is the infinite sum  
+$1+\frac{1}{5} + \frac{1}{25}+ \frac{1}{125} + \cdots$?
+<br>
+Give your answer with two decimal places.'''
+Q4 = fields_NUM(q, 1.25, 0.01)
+
+write_bbpool('pool4.txt', [Q1, Q2, Q3, Q4])
+```
+After that, the file `pool4.txt` has been created. It can be uplodad to Blackboard as indicated in [the Blackboard help page "Upload Questions"](https://help.blackboard.com/Learn/Instructor/Tests_Pools_Surveys/Reuse_Questions/Upload_Questions). Then one can use the questions to create an exam, whose preview is as follows.
+
+<img src="IMAGES/pool4.txt", width=1000>
+
+### Example 2: a pool of similar questions with different data
+
+We consider now the creation of a pool of 16 questions, all identical except for the numerical data.
 
 ```python
 from string import Template  
@@ -77,8 +109,7 @@ L = [fields_NUM(q.substitute(type=type, n=n), ans(type, n))
      for n in range(7, 15) for type in ['ordered', 'unordered']]
 write_bbpool('pool_on_pairs.txt', L)
 ```
-
-After that, the file `pool_on_pairs.txt`has been created. It can be uplodad to Blackboard as indicated in [the Blackboard help page "Upload Questions"](https://help.blackboard.com/Learn/Instructor/Tests_Pools_Surveys/Reuse_Questions/Upload_Questions), and used to create an exam, for instance with a Random Block. Here is one of the questions:
+This pool can be used in a test to create a Random Block. Here is one of the questions:
 
 <img src="IMAGES/bbtextquiz.png" width=1000>
 
