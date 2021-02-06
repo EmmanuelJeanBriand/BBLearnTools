@@ -2,13 +2,15 @@
 
 Tools in Python for writing math and quizzes for Blackboard Learn.
 
-Modules:
+[Blackboard Learn](https://www.blackboard.com/teaching-learning/learning-management/blackboard-learn) is a widespread commercial LMS (Learning Management System).
+
+*BBLearnTools* is not affiliated with or endorsed by Blackboard Inc. *BBLearnTools* is made available under the terms of the MIT License.
+
+### Modules in BBLearnTools:
 
 * blackjax: for rendering math in Blackboard with Mathjax2.
 * bbtextquiz: for writing pools of questions in text files, that can be uploaded to Blackboard.
 
-
-[Blackboard Learn](https://www.blackboard.com/teaching-learning/learning-management/blackboard-learn) is a widespread commercial LMS (Learning Management System).
 
 ## Module *blackjax*
 
@@ -62,7 +64,6 @@ This is now rendered in Blackboard as:
 
 Blackboard ("Original view") offers the possibility to [upload pools of questions as tab-separated text files](https://help.blackboard.com/Learn/Instructor/Tests_Pools_Surveys/Reuse_Questions/Upload_Questions). The module *bbtextquiz* provides functions for writing such files. 
 
-
 ### Example 1: a pool of 4 questions of different types
 
 As an example, we create a pool of four questions:
@@ -86,13 +87,13 @@ Q4 = fields_NUM(q, 1.25, 0.01)
 
 write_bbpool('pool4.txt', [Q1, Q2, Q3, Q4])
 ```
-After that, the file `pool4.txt` has been created. It can be uplodad to Blackboard as indicated in [the Blackboard help page "Upload Questions"](https://help.blackboard.com/Learn/Instructor/Tests_Pools_Surveys/Reuse_Questions/Upload_Questions). Then one can use the questions to create an exam, whose preview is as follows.
+The newly created file `pool4.txt` can be uplodad to Blackboard as indicated in [the Blackboard help page "Upload Questions"](https://help.blackboard.com/Learn/Instructor/Tests_Pools_Surveys/Reuse_Questions/Upload_Questions). Here is the preview of an exam created by uploading it.
 
 <img src="IMAGES/pool4.png" width=1000>
 
 ### Example 2: a pool of similar questions with different data
 
-We consider now the creation of a pool of 16 questions, all identical except for the numerical data.
+We consider the creation of a pool of 16 questions, all identical except for the numerical data.
 
 ```python
 from string import Template  
@@ -113,9 +114,11 @@ This pool can be used in a test to create a Random Block. Here is one of the que
 
 <img src="IMAGES/bbtextquiz.png" width=1000>
 
+### Main functions in *bbtextquiz*
+
 The main functions in this module are `write_bbpool` to write the file, and `fields_MC`, `fields_MA`, `fields_NUM`, `fields_TF`to format thge questions of type MC (Multiple Choice), MA (Multiple Answers), NUM (Numeric) and TF (True/False). The other questions are not supported by now, but it would not be difficult to complete the file `bbtextquiz.py` for including them. 
 
-### Install
+## Install
 
 * just download the files [`blackjax.py`](bblearntools/blackjax.py) and [`bbtextquiz.py`](bblearntools/bbtextquiz.py) and import them in your python file/interactive session with `from blackjax import blackjaxify`and/or `from bbtextquiz import *`.
     
