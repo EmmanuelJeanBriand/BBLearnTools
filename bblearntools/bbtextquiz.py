@@ -149,8 +149,7 @@ def _fix_decimal_separator(x):
 #-------------------
     
 def fields_NUM(question, answer, tol=0):
-    r"""
-    Format as a Numerical (NUM) question for blackboard.
+    r"""Return a version of the arguments formatted as a Numerical (NUM) question for blackboard.
     
     INPUT:
     
@@ -185,8 +184,7 @@ def fields_NUM(question, answer, tol=0):
     return ['NUM', question, answer, tol] 
 
 def fields_MA(question, answers):
-    r"""
-    Format as a Multiple Answer (MA) question for blackboard.
+    r"""Return a version of the arguments formatted as a Multiple Answer (MA) question for blackboard.
     
     INPUT:
     
@@ -208,8 +206,7 @@ def fields_MA(question, answers):
                for (s, b) in answers)))
 
 def fields_MC(question, answers):
-    r"""
-    Format as a Muliple Choice (MC) question for blackboard.
+    r"""Return a version of the arguments formatted as a Multiple Choice (MC) question for blackboard.
     
     INPUT:
     
@@ -238,8 +235,7 @@ def fields_MC(question, answers):
                for (s, b) in answers)))
                
 def fields_TF(question, ans):
-    r"""
-    Format as a True/False (TF) question for blackboard.
+    r"""Return a version of the arguments formatted as a True/False (TF) question for blackboard.
     
     INPUT:
     
@@ -255,8 +251,58 @@ def fields_TF(question, ans):
     question = _format_string(question)
     return ['TF', question, str(ans)]
     
-def fields_ESS(*args):
-    raise NotImplementedError
+def fields_ESS(question, sample_ans=""):
+    r"""Return a version of the arguments formatted as an Essay question (ESS) for blackboard.
+    
+    INPUT:
+    
+    - ``question`` -- string.
+    
+    - ``sample_ans`` -- string (Default: "").
+    
+    EXAMPLE::
+
+        >>> fields_ESS("Give a few examples where you can help preserve marine ecosystems.")
+        ['ESS', "<script type='text/javascript' async src='https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML'></script> Give a few examples where you can help preserve marine ecosystems.", "<script type='text/javascript' async src='https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML'></script> "]
+
+    """
+    question =  _format_string(question)
+    sample_ans = _format_string(sample_ans)
+    return ['ESS', question, sample_ans]
+
+
+def fields_SR(question, sample_ans=""):
+    r"""Return a version of the arguments formatted as an Essay question (ESS) for blackboard.
+    
+    INPUT:
+    
+    - ``question`` -- string.
+    
+    - ``sample_ans`` -- string (Default: "").
+    
+    EXAMPLE::
+
+        >>> fields_SR("Which ocean species do you find most interesting? Give three facts about it. ")
+        ['SR', "<script type='text/javascript' async src='https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML'></script> Which ocean species do you find most interesting? Give three facts about it. ", "<script type='text/javascript' async src='https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML'></script> "]
+    """
+    question =  _format_string(question)
+    sample_ans = _format_string(sample_ans)
+    return ['SR', question, sample_ans]
+
+def fields_FIL(question):
+    r"""Return a version of the arguments formatted as a File question (FIL) for Blackboard.
+    
+    INPUT:
+    
+    - ``question`` -- string.
+      
+    EXAMPLE::
+
+        >>> fields_FIL("What is the average temperature of the Pacific Ocean?")
+        ['FIL', "<script type='text/javascript' async src='https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML'></script> What is the average temperature of the Pacific Ocean?"]
+    """
+    question =  _format_string(question)
+    return ['FIL', question]
     
 def fields_ORD(*args):
     raise NotImplementedError
@@ -268,12 +314,6 @@ def fields_FIB(*args):
     raise NotImplementedError
     
 def fields_FIB_PLUS(*args):
-    raise NotImplementedError
-    
-def fields_FIL(*args):
-    raise NotImplementedError
-    
-def fields_SR(*args):
     raise NotImplementedError
     
 def fields_OP(*args):
