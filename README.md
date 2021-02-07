@@ -72,7 +72,7 @@ Calling Mathjax depends on the availability and accessibility of the Mathjax CDN
 
 ### References
 
-See the [wiki](wiki).
+See the [wiki](../../wiki).
 
 ## Module *bbtextquiz*
 
