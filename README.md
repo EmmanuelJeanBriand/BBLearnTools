@@ -8,8 +8,8 @@ Tools in Python for writing math and quizzes for Blackboard Learn.
 
 ### Modules in BBLearnTools:
 
-* blackjax: for rendering math in Blackboard with Mathjax2.
-* bbtextquiz: for writing pools of questions in text files, that can be uploaded to Blackboard.
+* [blackjax](#module-*blackjax*): for rendering math in Blackboard with Mathjax2.
+* [bbtextquiz](#module-*bbtxtquiz*): for writing pools of questions in text files, that can be uploaded to Blackboard.
 
 
 ## Module *blackjax*
@@ -59,6 +59,10 @@ This string can now be copied & pasted in blackboard's editor (in the [source co
 This is now rendered in Blackboard as:
 
 <img src="IMAGES/blackjax.png" width=1000>
+
+### Caveat
+
+Calling Mathjax depends on the availability and accessibility of the Mathjax CDN services.
 
 ## Module *bbtextquiz*
 
