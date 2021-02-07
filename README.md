@@ -62,7 +62,7 @@ This is now rendered in Blackboard as:
 
 ### Steps
 
-* write your text. Use LaTeX syntaxis for math, delimited with `$`...`$` or `(`...`)` for inline math, and `$$`...`$$`, `\[`...`]`, `\begin{equation}`...`\end{eqution}`, `\begin{align}`...`\end{align}`for display math. Use HTML tags for formatting text, in particular `<br>` for newlines (the ordinary newline chars won't be kept).
+* write your text. Use LaTeX syntaxis for math, delimited with `$`...`$` or `\(`...`\)` for inline math, and `$$`...`$$`, `\[`...`]`, `\begin{equation}`...`\end{eqution}`, `\begin{align}`...`\end{align}`for display math. Use HTML tags for formatting text, in particular `<br>` for newlines (the ordinary newline chars won't be kept).
 
 * In python, save your text in a string and apply `blackjaxify`.
 
