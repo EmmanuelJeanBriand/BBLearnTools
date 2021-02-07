@@ -60,9 +60,19 @@ This is now rendered in Blackboard as:
 
 <img src="IMAGES/blackjax.png" width=1000>
 
+### Steps
+
+* write your text. Use LaTeX syntaxis for math, delimited with `$`...`$` or `(`...`)` for inline math, and `$$`...`$$`, `\[`...`]`, `\begin{equation}`...`\end{eqution}`, `\begin{align}`...`\end{align}`for display math. Use HTML tags for formatting text, in particular `<br>` for newlines (the ordinary newline chars won't be kept).
+
+* In python, save your text in a string and apply `blackjaxify`.
+
 ### Caveat
 
 Calling Mathjax depends on the availability and accessibility of the Mathjax CDN services.
+
+### References
+
+See the [wiki](wiki).
 
 ## Module *bbtextquiz*
 
