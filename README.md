@@ -107,7 +107,7 @@ The newly created file `pool4.txt` can be uplodad to Blackboard as indicated in 
 
 ### Example 2: a pool of similar questions with different data
 
-We consider the creation of a pool of 16 questions, all identical except for the numerical data.
+We consider the creation of a pool of 16 questions, all identical except for the numerical data. For this we use a [Template string](https://docs.python.org/3/library/string.html#template-strings), with varible fields enclosed by the delimiters `\temp{`...`}`. 
 
 ```python
 from string import Template  
