@@ -8,8 +8,8 @@ Tools in Python for writing math and quizzes for Blackboard Learn.
 
 ### Modules in BBLearnTools:
 
-* [blackjax](#module-*blackjax*): for rendering math in Blackboard with Mathjax2.
-* [bbtextquiz](#module-*bbtxtquiz*): for writing pools of questions in text files, that can be uploaded to Blackboard.
+* [blackjax](#module-blackjax): for rendering math in Blackboard with Mathjax2.
+* [bbtextquiz](#module-bbtxtquiz): for writing pools of questions in text files, that can be uploaded to Blackboard.
 
 
 ## Module *blackjax*
