@@ -80,6 +80,7 @@ from blackjax import blackjaxify
 # global setting
 #---------------
 options = {'decimal separator': ','}
+print("Decimal separator: ", options['decimal separator'])
 
 def set_decimal_separator(sep = ','):
     r"""Change the decimal separator.
@@ -103,7 +104,8 @@ def set_decimal_separator(sep = ','):
         raise ValueError('Argument of set_decimal_separator should be either "."\
          or ",", got', sep)
     else:
-        options['decimal separator'] = sep        
+        options['decimal separator'] = sep
+	print("Decimal separator set to ", sep)
          
 # formatting
 #------------
