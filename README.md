@@ -148,4 +148,4 @@ The main functions in this module are `write_bbpool` to write the file, and `fie
 
 * just download the files [`blackjax.py`](bblearntools/blackjax.py) and [`bbtextquiz.py`](bblearntools/bbtextquiz.py) and import them in your python file/interactive session with `from blackjax import blackjaxify`and/or `from bbtextquiz import *`.
     
-* or download and install the whole project `BBLearnTools` by running `python setup.py install`. Then import within python with `from blackjax import blackjaxify`and/or `from bbtextquiz import *`.
+* or download and install the whole project `BBLearnTools` by running `python setup.py install`. Then import within python with `from blackjax import blackjaxify`and/or `from bbtextquiz import`. You can also build the documentation in html by running, from command line and from the directory `docs`, the command `make html`.
