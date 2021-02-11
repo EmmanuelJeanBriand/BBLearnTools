@@ -25,9 +25,9 @@ To use MathJax in blackboard, you just need to insert in your text (in the [sour
 <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
 ```
 and write your math delimited with `\(`...`\)` (inline math) and `\[`...`\]` or `\begin{equation}`... `\end{equation}`(display math), following the following rule:
- *don't leave any whitespace or newline character in math mode*. You may replace them with HTML non-breakable spaces (`&nbsp;`). This is because Blackboard may insert formatting code at these places, and break the LaTeX code before it is interpretyed by MathJax.
+ *don't leave any whitespace or newline character in math mode*. You may replace them with HTML non-breakable spaces (`&nbsp;`). This is because Blackboard may insert formatting code at these places, and break the LaTeX code before it is interpreted by MathJax.
  
-*Blackjax* just adpats your text so that it fulfills these requirements.
+*Blackjax* just adapts your text so that it fulfills these requirements.
 
 ### Example:
 
