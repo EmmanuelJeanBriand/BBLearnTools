@@ -18,6 +18,17 @@ LaTeX syntax for math content can be used in Blackboard's text editor. This LaTe
 
 *Blackjax* provides tools to convert text written outside of Blackboard Learn, into text whose math can sucessfully be rendered by Mathjax2 within Blackboard Learn (in most Blakboard tools, but not all of them; not, for instance, in discussion boards).
 
+### How to use Mathjax in Blackboard
+
+To use MathJax in blackboard, you just need to insert in your text (in the [source code window](https://help.blackboard.com/Learn/Instructor/Course_Content/Create_Content/Create_Course_Materials/Work_With_Text/What_Does_the_Editor_Do) of the text editor in Blackboard) the call to mathjax
+```HTML
+<script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
+```
+and write your math delimited with `\(`...`\)` (inline math) and `\[`...`\]` or `\begin{equation}`... `\end{equation}`(display math), following the following rule:
+ *don't leave any whitespace or newline character in math mode*. You may replace them with HTML non-breakable spaces (`&nbsp;`). This is because Blackboard may insert formatting code at these places, and break the LaTeX code before it is interpretyed by MathJax.
+ 
+*Blackjax* just adpats your text so that it fulfills these requirements.
+
 ### Example:
 
 In Python, load *blackjaxify*:
@@ -73,6 +84,7 @@ Calling Mathjax depends on the availability and accessibility of the Mathjax CDN
 ### References
 
 See the [wiki](../../wiki).
+
 
 ## Module *bbtextquiz*
 
