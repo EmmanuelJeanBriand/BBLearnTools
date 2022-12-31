@@ -8,11 +8,11 @@ AUTHORS:
 is a widespread commercial LMS (Learning Management System). LaTeX 
 syntax for math content can be used in blackboard's text editor. 
 This LaTeX code can be interpreted by 
-`WIRIS <https://docs.wiris.com/en/mathtype/mathtype_web/latex-support>`_ 
+`MathType <https://docs.wiris.com/en/mathtype/mathtype_web/latex-support>`_ 
 and rendered with images. 
 The result is not always satisfying. An not very-known alternative is to use  
 `Mathjax2 <https://docs.mathjax.org/en/v2.7-latest/start.html>`_ ,
-instead of the default WIRIS, to render math content. 
+instead of the default MathType, to render math content. 
 
 *Blackjax* provides a tool (blackjaxify)  to convert text written outside of Blackboard Learn, 
 into text whose math can sucessfully be rendered by Mathjax2 within 

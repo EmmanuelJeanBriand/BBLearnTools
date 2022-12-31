@@ -5,11 +5,11 @@ AUTHORS:
 - Emmanuel Briand (2021): initial version
 
 The function ``write_bbtextpool`` writes a text file than can be uploaded in Blackboard Learn (ORIGINAL course view) as indicated in Blackboard\'s help pages on "`Upload Questions
-<https://help.blackboard.com/Learn/Instructor/Tests_Pools_Surveys/Reuse_Questions/Upload_Questions>`_" 
+<https://help.blackboard.com/Learn/Instructor/Original/Tests_Pools_Surveys/Orig_Reuse_Questions/Upload_Questions>`_" 
 to create a pool of questions. 
 
 The functions `fields_NUM`, `fields_MC`, `fields_MA`, `fields_TF` format the questions 
-of type NUM, MC, MA and TF. See the BlackBoard help pages on "`Upload Questions <https://help.blackboard.com/Learn/Instructor/Tests_Pools_Surveys/Reuse_Questions/Upload_Questions>`_" for the different types of questions.
+of type NUM, MC, MA and TF. See the aforementionned BlackBoard help page.
 
 EXAMPLES:
 
@@ -27,7 +27,7 @@ We create a pool of four questions, of types MC, MA, NUM and TF::
     ... <br>
     ... Give your answer with two decimal places.'''
     >>> Q4 = fields_NUM(q, 1.25, 0.01)
-    >>> write_bbpool('pool4.txt', [Q1, Q2, Q3, Q4])
+    >>> write_bbpool('../TESTS_OUTPUT/pool4.txt', [Q1, Q2, Q3, Q4])
 
 We create a pool of 16 questions of type NUM whose data are different. 
 For this, we make use of `Template strings <https://docs.python.org/3.8/library/string.html#template-strings>`_::
@@ -35,20 +35,20 @@ For this, we make use of `Template strings <https://docs.python.org/3.8/library/
     >>> from string import Template
     >>> class BBTemplate(Template):
     ...     delimiter = r'\temp'
-    >>> q = BBTemplate(r"How many \temp{type} pairs of distinct elements of $\{1, 2, \ldots, \temp{n}\} are there?")
+    >>> q = BBTemplate(r"How many \temp{type} pairs of distinct elements of $\{1, 2, \ldots, \temp{n}\}$ are there?")
     >>> def ans(type, n): return int(n*(n-1)/2) if type == 'unordered' else n*(n-1)
     >>> L = [fields_NUM(q.substitute(type=type, n=n), ans(type, n)) 
     ...      for n in range(7, 15) for type in ['ordered', 'unordered']]
-    >>> write_bbpool('pool_on_pairs.txt', L)
+    >>> write_bbpool('../TESTS_OUTPUT/pool_on_pairs.txt', L)
     >>> len(L)
     16
     >>> L[0] # Let us a look at the first question
-    ['NUM', "<script type='text/javascript' async src='https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML'></script> How many ordered pairs of distinct elements of $\\{1, 2, \\ldots, 7\\} are there?", '42', '0']
+    ['NUM', "<script type='text/javascript' async src='https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML'></script> How many ordered pairs of distinct elements of \\(\\{1,&nbsp;2,&nbsp;\\ldots,&nbsp;7\\}\\) are there?", '42', '0']
     
 Metadata
 --------
 
-Note that you cannot associate metadata (such as: feedback, or partial credir) to the questions uploaded this way. To upload questions with Metadata, you need to **import** your questions as explained in the BlackBoard help pages on `"Import_or_Export_Tests_Surveys_and_Pools" <https://help.blackboard.com/Learn/Instructor/Tests_Pools_Surveys/Reuse_Questions/Import_or_Export_Tests_Surveys_and_Pools>`_. Files to be imported need to be written in a format proper to Blackboard. To write such files, you need a Blackboard quiz maker such as  `toasted crumpets\' Blackboard Quiz Maker <https://github.com/toastedcrumpets/BlackboardQuizMaker>`_ or the commercial tool `Respondus 4.0 <https://web.respondus.com/he/respondus/>`_.
+Note that you cannot associate metadata (such as: feedback, or partial credir) to the questions uploaded this way. To upload questions with Metadata, you need to **import** your questions as explained in the BlackBoard help pages on `"Import_or_Export_Tests_Surveys_and_Pools" <https://help.blackboard.com/Learn/Instructor/Original/Tests_Pools_Surveys/Reuse_Questions/Import_or_Export_Tests_Surveys_and_Pools>`_. Files to be imported need to be written in a format proper to Blackboard. To write such files, you need a Blackboard quiz maker such as  `toasted crumpets\' Blackboard Quiz Maker <https://github.com/toastedcrumpets/BlackboardQuizMaker>`_ or the commercial tool `Respondus 4.0 <https://web.respondus.com/he/respondus/>`_.
 
 About the decimal separator (comma/dot)
 ---------------------------------------
@@ -64,16 +64,18 @@ EXAMPLE:
     >>> fields_NUM(q, 1.25, 0.01)
     ['NUM', "<script type='text/javascript' async src='https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML'></script> ¿What is the infinite sum   \\(1+\\frac{1}{5}&nbsp;+&nbsp;\\frac{1}{25}+&nbsp;\\frac{1}{125}&nbsp;+&nbsp;\\cdots\\)? <br> Give your answer with two decimal places.", '1,25', '0,01']
     >>> set_decimal_separator('.')
+    Decimal separator set to .
     >>> fields_NUM(q, 1.25, 0.01)
     ['NUM', "<script type='text/javascript' async src='https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML'></script> ¿What is the infinite sum   \\(1+\\frac{1}{5}&nbsp;+&nbsp;\\frac{1}{25}+&nbsp;\\frac{1}{125}&nbsp;+&nbsp;\\cdots\\)? <br> Give your answer with two decimal places.", '1.25', '0.01']
     >>> set_decimal_separator() # back to ','as separator
+    Decimal separator set to ,
 
 """
 
 # imports
 #--------
 import csv
-csv.register_dialect('blackboard', delimiter='\t', quoting=csv.QUOTE_NONE, quotechar='')
+csv.register_dialect('blackboard', delimiter='\t', quoting=csv.QUOTE_NONE)
 from itertools import chain
 from blackjax import blackjaxify
 
@@ -94,9 +96,11 @@ def set_decimal_separator(sep = ','):
     >>> options['decimal separator']
     ','
     >>> set_decimal_separator('.')
+    Decimal separator set to .
     >>> options['decimal separator']
     '.'
     >>> set_decimal_separator()
+    Decimal separator set to ,
     >>> options['decimal separator']
     ','
 """
@@ -105,7 +109,7 @@ def set_decimal_separator(sep = ','):
          or ",", got', sep)
     else:
         options['decimal separator'] = sep
-	print("Decimal separator set to ", sep)
+        print("Decimal separator set to", sep)
          
 # formatting
 #------------
@@ -176,9 +180,11 @@ def fields_NUM(question, answer, tol=0):
     Use dot instead of comma as separator::
      
 	>>> set_decimal_separator('.')
+        Decimal separator set to .
 	>>> fields_NUM(q, 1.25, 0.01)
 	['NUM', "<script type='text/javascript' async src='https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML'></script> ¿What is the infinite sum   \\(1+\\frac{1}{5}&nbsp;+&nbsp;\\frac{1}{25}+&nbsp;\\frac{1}{125}&nbsp;+&nbsp;\\cdots\\)? <br> Give your answer with two decimal places.  Use decimal comma (as in \\(3,14\\))  rather than decimal point <s>(3.14)</s>.", '1.25', '0.01']
         >>> set_decimal_separator() # back to ',' as separator    
+        Decimal separator set to ,
     """
     question =  _format_string(question)
     answer = _fix_decimal_separator(answer)
@@ -340,7 +346,7 @@ def write_bbpool(output_file, fields_list):
         ...                    ('a local minimum', False), 
         ...                    ('a saddle point', True)])
         >>> Q2 = fields_TF('The series with general term $1/n$ is convergent.', False )
-        >>> write_bbpool('short_test.txt', [Q1, Q2])
+        >>> write_bbpool('../TESTS_OUTPUT/short_test.txt', [Q1, Q2])
         
     """
     with open(output_file, "w", encoding='utf-16') as f:
