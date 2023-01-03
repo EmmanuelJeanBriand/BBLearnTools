@@ -27,7 +27,7 @@ We create a pool of four questions, of types MC, MA, NUM and TF::
     ... <br>
     ... Give your answer with two decimal places.'''
     >>> Q4 = fields_NUM(q, 1.25, 0.01)
-    >>> write_bbpool('../TESTS_OUTPUT/pool4.txt', [Q1, Q2, Q3, Q4])
+    >>> write_bbpool('TESTS/pool4.txt', [Q1, Q2, Q3, Q4]) # doctest:   +SKIP
 
 We create a pool of 16 questions of type NUM whose data are different. 
 For this, we make use of `Template strings <https://docs.python.org/3.8/library/string.html#template-strings>`_::
@@ -39,7 +39,7 @@ For this, we make use of `Template strings <https://docs.python.org/3.8/library/
     >>> def ans(type, n): return int(n*(n-1)/2) if type == 'unordered' else n*(n-1)
     >>> L = [fields_NUM(q.substitute(type=type, n=n), ans(type, n)) 
     ...      for n in range(7, 15) for type in ['ordered', 'unordered']]
-    >>> write_bbpool('../TESTS_OUTPUT/pool_on_pairs.txt', L)
+    >>> write_bbpool('TESTS/pool_on_pairs.txt', L) # doctest:   +SKIP
     >>> len(L)
     16
     >>> L[0] # Let us a look at the first question
@@ -346,7 +346,7 @@ def write_bbpool(output_file, fields_list):
         ...                    ('a local minimum', False), 
         ...                    ('a saddle point', True)])
         >>> Q2 = fields_TF('The series with general term $1/n$ is convergent.', False )
-        >>> write_bbpool('../TESTS_OUTPUT/short_test.txt', [Q1, Q2])
+        >>> write_bbpool('TESTS/short_test.txt', [Q1, Q2]) # doctest:   +SKIP
         
     """
     with open(output_file, "w", encoding='utf-16') as f:
