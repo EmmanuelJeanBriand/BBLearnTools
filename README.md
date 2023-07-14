@@ -65,7 +65,7 @@ that fulfills:
 <br>
 Find the coefficient \(b_5\) of the Fourier series of \(f\).
 ```
-This string can now be copied & pasted in blackboard's editor (in the [source code window](https://help.blackboard.com/Learn/Instructor/Course_Content/Create_Content/Create_Course_Materials/Work_With_Text/What_Does_the_Editor_Do)) or used in pools of questions that can be [uploaded as text files](https://help.blackboard.com/Learn/Instructor/Tests_Pools_Surveys/Reuse_Questions/Upload_Questions) (Note that in this case, all newline characters should be erased).
+This string can now be copied & pasted in blackboard's editor (in the [source code window](https://help.blackboard.com/Learn/Instructor/Course_Content/Create_Content/Create_Course_Materials/Work_With_Text/What_Does_the_Editor_Do)) or used in pools of questions that can be [uploaded as text files](https://help.blackboard.com/Learn/Instructor/Original/Tests_Pools_Surveys/Reuse_Questions/Upload_Questions) (Note that in this case, all newline characters should be erased).
 
 This is now rendered in Blackboard as:
 
@@ -88,7 +88,7 @@ See the [wiki](../../wiki).
 
 ## Module *bbtextquiz*
 
-Blackboard ("Original view") offers the possibility to [upload pools of questions as tab-separated text files](https://help.blackboard.com/Learn/Instructor/Tests_Pools_Surveys/Reuse_Questions/Upload_Questions). The module *bbtextquiz* provides functions for writing such files. 
+Blackboard ("Original view") offers the possibility to [upload pools of questions as tab-separated text files](https://help.blackboard.com/Learn/Instructor/Original/Tests_Pools_Surveys/Reuse_Questions/Upload_Questions). The module *bbtextquiz* provides functions for writing such files. 
 
 ### Example 1: a pool of 4 questions of different types
 
@@ -113,7 +113,7 @@ Q4 = fields_NUM(q, 1.25, 0.01)
 
 write_bbpool('pool4.txt', [Q1, Q2, Q3, Q4])
 ```
-The newly created file `pool4.txt` can be uplodad to Blackboard as indicated in [the Blackboard help page "Upload Questions"](https://help.blackboard.com/Learn/Instructor/Tests_Pools_Surveys/Reuse_Questions/Upload_Questions). Here is the preview of an exam created by uploading it.
+The newly created file `pool4.txt` can be uplodad to Blackboard as indicated in [the Blackboard help page "Upload Questions"](https://help.blackboard.com/Learn/Instructor/Original/Tests_Pools_Surveys/Orig_Reuse_Questions/Upload_Questions). Here is the preview of an exam created by uploading it.
 
 <img src="IMAGES/pool4.png" width=1000>
 
