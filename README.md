@@ -1,6 +1,6 @@
 # BBLearnTools
 
-Tools in Python for writing math and quizzes for Blackboard Learn.
+Tools in Python for writing math and quizzes for Blackboard Learn ("Original View", not ["Ultra"](https://help.blackboard.com/Learn/Instructor/Ultra/Getting_Started/What_Is_Ultra). It seems that Blackboard "Ultra" restricted the ways of uploading questions, which makes blackjax and bbtextquiz incompatible with Ultra).
 
 [Blackboard Learn](https://www.blackboard.com/teaching-learning/learning-management/blackboard-learn) is a widespread commercial LMS (Learning Management System).
 
@@ -20,7 +20,7 @@ LaTeX syntax for math content can be used in blackboard's text editor. This LaTe
 
 ### How to use Mathjax in Blackboard
 
-To use MathJax in blackboard, you just need to insert in your text (in the [source code window](https://help.blackboard.com/Learn/Instructor/Course_Content/Create_Content/Create_Course_Materials/Work_With_Text/What_Does_the_Editor_Do) of the text editor in Blackboard) the call to mathjax
+To use MathJax in blackboard, you just need to insert in your text (in the [source code window](https://help.blackboard.com/Learn/Instructor/Original/Course_Content/Create_Content/Create_Course_Materials/Work_With_Text/What_Does_the_Editor_Do) of the text editor in Blackboard) the call to mathjax
 ```HTML
 <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
 ```
