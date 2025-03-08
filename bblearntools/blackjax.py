@@ -227,7 +227,9 @@ def fix_latex_delimiters(text):
     if re.search(r"\\\$", text) != None:
         raise NotImplementedError("The string contains escaped dollars.")
     text = re.sub(r"\${2}(.+?)\${2}", r"\\begin{equation}\1\\end{equation}" ,
-                  text, flags = re.DOTALL) 
+                  text, flags = re.DOTALL)
+    text = re.sub(r"\\\[(.+?)\\\]", r"\\begin{equation}\1\\end{equation}" ,
+                  text, flags = re.DOTALL)
     text = re.sub(r"\${1}(.+?)\${1}", r"\(\1\)" , text, flags = re.DOTALL)
     return text
 
